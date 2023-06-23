@@ -28,7 +28,7 @@ def filter():
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    print('\nHello! Let\'s explore some US bikeshare data!')
+    print('\nAre you ready to explore some bikeshare data?')
     # Code block asking thefor the city to be analyzed
     print('\nWhich city do you want to analyze?\nEnter the index (integer) or'\
     'type the name of the city.')
@@ -53,8 +53,8 @@ def filter():
                 break
             elif city_dict.get(city.lower()) == None:
                 print('\nData not available for this city. Please select a'\
-                'city with available data from the list below.\nEnter the'\
-                'index (integer) or type the name of the city.')
+                ' city with available data from the list below.\nEnter the'\
+                ' index (integer) or type the name of the city.')
                 continue
             else:
                 break
