@@ -7,7 +7,7 @@ import time
 # This is the list of cities. It can easily be added to in the future.
 # If a city is added to it, the cities_path will be created and the city and
 # path will be added to the city_dict
-cities = ['chicago', 'new york city', 'washington']
+cities = ['new york city', 'washington', 'chicago']
 cities_path = [element.replace(' ', '_') + '.csv' for element in cities]
 city_dict = dict(zip(cities, cities_path))
 valid_months = ['january', 'february', 'march', 'april', 'may', 'june', 'all']
