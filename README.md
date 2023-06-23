@@ -9,3 +9,6 @@ US cities - Chicago, New York, and Washington DC.
 
 ## Files used
 bikeshare.py
+
+### Author
+Jérôme Launay
