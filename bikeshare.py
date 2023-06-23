@@ -3,11 +3,12 @@ import pandas as pd
 import numpy as np
 import datetime
 import time
+import re
 
 # This is the list of cities. It can easily be added to in the future.
 # If a city is added to it, the cities_path will be created and the city and
 # path will be added to the city_dict
-cities = ['chicago', 'new york city', 'washington']
+cities = ['new york city', 'washington', 'chicago']
 cities_path = [element.replace(' ', '_') + '.csv' for element in cities]
 city_dict = dict(zip(cities, cities_path))
 valid_months = ['january', 'february', 'march', 'april', 'may', 'june', 'all']
@@ -28,7 +29,7 @@ def filter():
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    print('\nHello! Let\'s explore some US bikeshare data!')
+    print('\nAre you ready to explore some bikeshare data?')
     # Code block asking thefor the city to be analyzed
     print('\nWhich city do you want to analyze?\nEnter the index (integer) or'\
     'type the name of the city.')
@@ -43,18 +44,21 @@ def filter():
                 city = cities[int(city) - 1]
                 break
             # We can also select the city using some of the well known acronyms
-            # for New York City and Washington DC. Not particularly useful
-            # though as these are just special cases.
-            elif city in ('nyc', 'new york'):
+            # and nicknames for New York City and Washington DC. Not
+            # particularly useful though as these are just special cases.
+            elif city in ('nyc', 'new york', 'big apple'):
                 city = 'new york city'
                 break
-            elif city in ('dc', 'd.c', 'd.c.'):
+            elif re.match('[d].{0,1}[c].{0,1}', city):
                 city = 'washington'
+                break
+            elif city in ('chi-town', 'windy city'):
+                city = 'chicago'
                 break
             elif city_dict.get(city.lower()) == None:
                 print('\nData not available for this city. Please select a'\
-                'city with available data from the list below.\nEnter the'\
-                'index (integer) or type the name of the city.')
+                ' city with available data from the list below.\nEnter the'\
+                ' index (integer) or type the name of the city.')
                 continue
             else:
                 break
